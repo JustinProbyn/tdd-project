@@ -1,5 +1,7 @@
 # tdd-project
 
+My first attempt at TDD using Vue.js, Vue Test Utils, and Jeset
+
 ## Project setup
 ```
 npm install
