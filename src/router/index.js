@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
-import ClimbingRating from "../views/ClimbRating";
+import FallsCounter from "../views/FallsCounter";
 
 Vue.use(Router);
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  routes: [{ path: "/", name: "/", component: ClimbingRating }],
+  routes: [{ path: "/", name: "/", component: FallsCounter }]
 });
