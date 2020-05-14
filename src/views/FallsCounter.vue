@@ -5,11 +5,11 @@
       giving up entirely
     </p>
     <div class="climber-name">{{ climber }}</div>
-    <div class="max-failed">{{ maxFailedAttempts }}</div>
+    <div class="max-failed">He can only fall {{ maxFailedAttempts }} times</div>
     <button id="fallButton" @click="increaseFalls()">
       John fell {{ failedAttempts }} times
     </button>
-    <div v-if="failedAttempts >= 5">John gave up</div>
+    <div id="gives-up" v-show="failedAttempts >= 5">John gave up</div>
   </div>
 </template>
 

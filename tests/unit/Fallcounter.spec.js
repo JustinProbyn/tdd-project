@@ -53,6 +53,8 @@ describe("this button", () => {
   });
 
   it("john gives up", async () => {
+    const text = wrapper.find("#gives-up");
+    expect(text).toBeUndefined;
     const button = wrapper.find("#fallButton");
     await button.trigger("click");
     await button.trigger("click");
