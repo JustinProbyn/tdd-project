@@ -1,4 +1,4 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import FallsCounter from "../../src/views/FallsCounter.vue";
 
 /*global spyOn*/
@@ -18,41 +18,35 @@ afterEach(() => {
 });
 
 describe("FallsCounter.vue", () => {
-  it("displays the climber's name", () => {
+  it("should display the climber's name on the page", () => {
     const climber = wrapper.find(".climber-name");
     expect(climber.text()).toBe("John");
   });
-});
 
-test("displays the number of failed attempts before giving up", () => {
-  const wrapper = mount(FallsCounter);
-  const number = wrapper.vm.maxFailedAttempts;
-  expect(number).toBe(5);
-});
+  it("displays the number of failed attempts allowed before he gives up", () => {
+    const number = wrapper.vm.maxFailedAttempts;
+    expect(number).toBe(5);
+  });
 
-test("there is a button", () => {
-  const wrapper = mount(FallsCounter);
-  wrapper.find("button");
-});
+  it("should display a button on the page", () => {
+    wrapper.find("button");
+  });
 
-describe("this button", () => {
-  it("button is clicked", () => {
-    const wrapper = mount(FallsCounter);
+  it("should fire function 'increaseFalls' when button is clicked", () => {
     const button = wrapper.find("#fallButton");
     const spy = spyOn(wrapper.vm, "increaseFalls");
     button.trigger("click");
-
     expect(spy).toBeCalled();
   });
 
-  it("increases failedAttempts on click", async () => {
+  it("increases data property 'failedAttempts' when clicking the button which runs the function 'increaseFalls'", async () => {
     expect(wrapper.text()).toContain("0");
     const button = wrapper.find("#fallButton");
     await button.trigger("click");
     expect(wrapper.text()).toContain("1");
   });
 
-  it("john gives up", async () => {
+  it("displays that john gives up ONLY when his falls exceed that of the maximum allowed falls", async () => {
     const text = wrapper.find("#gives-up");
     expect(text).toBeUndefined;
     const button = wrapper.find("#fallButton");
